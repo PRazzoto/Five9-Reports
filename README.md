@@ -8,7 +8,7 @@ Nesse repositório contém uma aplicação das API's da Five9 para extrair os re
 ***relatorio.css/relatorio.html*** - template para o pdf
 
 ## Importante
-É necessário criar um arquivo chamado: credentials.txt que deverá ter o login e senha no seguinte formato sem nenhum caracter nem espaço extra:
+É necessário criar um arquivo chamado: credentials.txt que deverá ter o login e senha no seguinte formato, **sem nenhum caracter e nem espaço extra**:
 ```
 username password
 ```
