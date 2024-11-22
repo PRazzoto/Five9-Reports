@@ -18,13 +18,10 @@ relatorio.css/relatorio.html - template para o pdf
 4 - datetime
 
 ```
-
 pip install five9 pdfkit jinja2 datetime
-
 ```
 # Execução
 Para executar o código, basta alterar as credenciais, a data de início e fim e rodar o código com o seguinte comando:
 ```
 python main.py
-
 ```
