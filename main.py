@@ -5,8 +5,14 @@ from gerar_pdf import data, create_pdf
 # Initialize an empty list to store all transformed data records
 all_transformed_data = []
 
+# Reading the username and password
+filename = r"credentials.txt"
+with open(filename, "rt") as f:
+    text = f.readline()
+username, password = text.strip().split()
+
 # Five9 parameters
-client = Five9("patrick.amber@unimedfederacao", "Mudar@12345")
+client = Five9(username=username, password=password)
 start = "2024-10-01T00:00:00.000"
 end = "2024-10-31T23:59:59.000"
 
@@ -31,9 +37,7 @@ def getRelatorioChamadas():
             "total_atend": int(record_data[1]) if record_data[1] else 0,
             "total": int(record_data[4]) if record_data[4] else 0,
             "aban": (
-                round(float(record_data[2]),2)
-                if record_data[2] is not None
-                else 0
+                round(float(record_data[2]), 2) if record_data[2] is not None else 0
             ),
             "aban_percent": (
                 round(float(record_data[2]) / float(record_data[1]), 2)
