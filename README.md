@@ -8,11 +8,20 @@ gerar_pdf - nesse arquivo contém as funções necessárias para a manipulação
 relatorio.css/relatorio.html - template para o pdf
 
 # Bibliotecas utilizadas
+
 1 - five9
+
 2 - pdfkit
+
 3 - jinja2
+
 4 - datetime
 
+```
+
+pip install five9 pdfkit jinja2 datetime
+
+```
 # Execução
 Para executar o código, basta alterar as credenciais, a data de início e fim e rodar o código com o seguinte comando:
 ```
