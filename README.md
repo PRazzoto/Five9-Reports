@@ -1,4 +1,4 @@
-#Explicação Geral
+# Explicação Geral
 Nesse repositório contém uma aplicação das API's da Five9 para extrair os relatórios.
 
 main.py - nesse arquivo estão 3 funções que realizam os request's para a API da Five9
@@ -7,12 +7,12 @@ gerar_pdf - nesse arquivo contém as funções necessárias para a manipulação
 
 relatorio.css/relatorio.html - template para o pdf
 
-#Bibliotecas utilizadas
+# Bibliotecas utilizadas
 1 - five9
 2 - pdfkit
 3 - jinja2
 4 - datetime
 
-#Execução
+# Execução
 Para executar o código, basta alterar as credenciais, a data de início e fim e rodar o código com o seguinte comando
                                                     python main.py
