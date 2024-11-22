@@ -1,11 +1,11 @@
 # Explicação Geral
 Nesse repositório contém uma aplicação das API's da Five9 para extrair os relatórios.
 
-**main.py** - nesse arquivo estão 3 funções que realizam os request's para a API da Five9
+***main.py*** - nesse arquivo estão 3 funções que realizam os request's para a API da Five9
 
-**gerar_pdf** - nesse arquivo contém as funções necessárias para a manipulação dos dados e criação do pdf baseado nos templates
+***gerar_pdf*** - nesse arquivo contém as funções necessárias para a manipulação dos dados e criação do pdf baseado nos templates
 
-**relatorio.css/relatorio.html** - template para o pdf
+***relatorio.css/relatorio.html*** - template para o pdf
 
 # Bibliotecas utilizadas
 
