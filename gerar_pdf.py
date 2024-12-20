@@ -99,6 +99,8 @@ def create_pdf():
         "tma": average_times([item["tma"] for item in data]),
         "tme": average_times([item["tme"] for item in data]),
         "sla": avg_percentages([str(item["sl"]) for item in data]),
+        "qtde": sum(item["qtde"] for item in data),
+        "slr": avg_percentages([str(item["slr"]) for item in data]),
     }
 
     # Caminho para o template HTML

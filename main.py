@@ -147,9 +147,10 @@ def getRelatorioChamadas():
             "tma": "00:00:00",
             "tme": "00:00:00",
             "sl": "N/A",
+            "qtde": "N/A",
+            "slr": "N/A",
         }
         all_transformed_data.append(transformed_data)
-        return record_data[2]
 
 
 def getTmaTme():
@@ -200,22 +201,30 @@ def getRelatorioSLA():
 
 
 # Call functions to gather data from the reports
-aband = getRelatorioChamadas()
+getRelatorioChamadas()
 getTmaTme()
 getRelatorioSLA()
 
+
 retornos = getReturn()
+# Integra o valor de "qtde" de retornos em all_transformed_data
 for item in all_transformed_data:
     nome_campanha = item["nome"]
     if nome_campanha in retornos:
-        # Adiciona a contagem retornada por getReturn() ao dicionário
-        item["qtde"] = retornos[nome_campanha]
+        item["qtde"] = float(retornos[nome_campanha])
     else:
-        # Caso não haja correspondência, pode deixar sem intersect_count ou
-        # definir como 0
-        item["qtde"] = 0
+        item["qtde"] = 0.0
+
+# Calcula o SLR (retornos/aban) agora utilizando o campo "qtde"
+for item in all_transformed_data:
+    aban = float(item.get("aban", 0))
+    qtde = float(item.get("qtde", 0))
+    slr = qtde / aban if aban != 0 else 0.0
+
+    item["slr"] = f"{slr * 100:.2f}"
 
 print(all_transformed_data)
+
 # Append all data to the PDF generation list and create the PDF
 data.extend(all_transformed_data)
 create_pdf()
