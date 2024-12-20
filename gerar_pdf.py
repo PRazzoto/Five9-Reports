@@ -41,8 +41,7 @@ def time_to_timedelta(time_str):
         hours=time_obj.hour,
         minutes=time_obj.minute,
         seconds=time_obj.second,
-        milliseconds=time_obj.microsecond
-        // 1000,  # Converte microsegundos para milissegundos
+        milliseconds=time_obj.microsecond // 1000,
     )
 
 
@@ -90,7 +89,6 @@ def create_pdf():
         "Dezembro",
     ]
 
-    # Calcular totais (exemplo de dados)
     totals = {
         "total": sum(item["total"] for item in data),
         "total_atend": sum(item["total_atend"] for item in data),

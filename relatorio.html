@@ -23,6 +23,7 @@
                     <th rowspan="2" class="header-col">Nome da Ilha</th>
                     <th colspan="5">Quantidade de Ligações</th>
                     <th colspan="2">Serviço</th>
+                    <th colspan="2">Retornos</th>
                 </tr>
                 <tr>
                     <th>Total</th>
@@ -32,6 +33,8 @@
                     <th>TMA</th>
                     <th>TME</th>
                     <th>SLA</th>
+                    <th>Qtde.</th>
+                    <th>SLR</th>
                 </tr>
             </thead>
             <tbody id="table-body">
@@ -45,6 +48,8 @@
                     <td>{{ item.tma }}</td>
                     <td>{{ item.tme }}</td>
                     <td>{{item.sl}}</td>
+                    <td>{{item.qtde}}</td>
+                    <td>{{item.slr}}</td>
                 </tr>
                 {% endfor %}
                 <tr class="total-row">
