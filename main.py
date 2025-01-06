@@ -3,6 +3,7 @@ import time
 from gerar_pdf import data, create_pdf
 from datetime import datetime
 import locale
+from decimal import Decimal, ROUND_HALF_UP
 
 locale.setlocale(locale.LC_ALL, "pt_BR.UTF-8")
 
@@ -17,8 +18,8 @@ username, password = text.strip().split()
 
 # Five9 parameters
 client = Five9(username=username, password=password)
-start = "2024-11-01T00:00:00.000"
-end = "2024-11-30T23:59:59.000"
+start = "2024-12-01T00:00:00.000"
+end = "2024-12-31T23:59:59.000"
 
 
 def getReturn():
@@ -139,7 +140,13 @@ def getRelatorioChamadas():
                 round(float(record_data[2]), 2) if record_data[2] is not None else 0
             ),
             "aban_percent": (
-                round(float(record_data[2]) / float(record_data[1]), 2)
+                float(
+                    (
+                        Decimal(record_data[2])
+                        / Decimal(record_data[4])
+                        * Decimal("100")
+                    ).quantize(Decimal(".01"), rounding=ROUND_HALF_UP)
+                )
                 if record_data[2] and record_data[1]
                 else 0
             ),
@@ -219,11 +226,21 @@ for item in all_transformed_data:
 for item in all_transformed_data:
     aban = float(item.get("aban", 0))
     qtde = float(item.get("qtde", 0))
-    slr = qtde / aban if aban != 0 else 0.0
+    total_atend = float(item.get("total_atend", 0))
+    total = float(item.get("total", 0))
+    sla = str(item.get("sl", 0))
+    sla = float(sla.strip("%"))
 
-    item["slr"] = f"{slr * 100:.2f}"
+    if sla > 0.0:
+        slr = (qtde / total_atend) + sla if aban != 0 else 0.0
+    else:
+        slr = sla
 
-print(all_transformed_data)
+    if slr >= 100.0:
+        slr = 100.00
+
+    item["slr"] = f"{slr:.2f}"
+
 
 # Append all data to the PDF generation list and create the PDF
 data.extend(all_transformed_data)
